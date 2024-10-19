@@ -1,0 +1,25 @@
+#root {
+  height: 100vh;
+  width: 100vw;
+}
+
+main {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: start;
+  align-items: center;
+}
+
+.container {
+  width: fit-content;
+}
+
+.todo-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
