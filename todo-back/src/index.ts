@@ -51,6 +51,6 @@ app.put('/todos/:id', async (req: Request, res: Response) => {
   }
 });
 
-app.listen(port, () => {
+app.listen(3000,'0.0.0.0', () => {
   console.log(`Serveur en cours d'exécution sur le port ${port}`);
 });
