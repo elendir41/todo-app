@@ -21,6 +21,7 @@ app.get('/todos', async (req: Request, res: Response) => {
   try {
     const result = await pool.query('SELECT * FROM todos');
     res.json(result.rows);
+    console.log("GET /todos");
   } catch (err: any) {
     console.error(err.message);
     res.status(500).send('Erreur serveur');
@@ -35,6 +36,8 @@ app.post('/todos', async (req: Request, res: Response) => {
       [value, false]
     );
     res.json(result.rows[0]);
+    console.log("post todos ");
+
   } catch (err: any) {
     console.error(err.message);
     res.status(500).send('Erreur serveur');
