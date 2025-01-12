@@ -1,12 +1,20 @@
 import express, { Request, Response } from 'express';
+import { initDatabase } from './db';
+
 import pool from './db';
 import cors from 'cors';
-import dotenv from 'dotenv';
+// import dotenv from 'dotenv';
 
-dotenv.config();
+// dotenv.config();
+
+initDatabase().then(() => {
+  console.log('Database initialized.');
+}).catch((error) => {
+  console.error('Failed to initialize the database:', error);
+});
 
 const app = express();
-const port = process.env.PORT;
+const port = 3000;
 
 app.use(express.json());
 
@@ -14,6 +22,7 @@ app.use(cors());
 
 app.get('/todos', async (req: Request, res: Response) => {
   try {
+    console.log("GET /todos")
     const result = await pool.query('SELECT * FROM todos');
     res.json(result.rows);
   } catch (err: any) {
@@ -25,6 +34,7 @@ app.get('/todos', async (req: Request, res: Response) => {
 app.post('/todos', async (req: Request, res: Response) => {
   const { value } = req.body;
   try {
+    console.log("POST /todos")
     const result = await pool.query(
       'INSERT INTO todos (value, checked) VALUES ($1, $2) RETURNING *',
       [value, false]
@@ -52,6 +62,7 @@ app.put('/todos/:id', async (req: Request, res: Response) => {
 });
 
 app.get('/', async (req: Request, res: Response) => {
+  console.log("GET /")
   res.status(200).send('Serveur en cours d\'exécution');
 });
 

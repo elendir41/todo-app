@@ -12,6 +12,17 @@ export default function TodoList() {
 
 
   const fetchTodos = async () => {
+    try{
+        console.log(import.meta.env.VITE_BACKEND_URL)
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/`)
+        if(response.ok){
+            console.log('Server is running')
+        }else{
+            console.error('Failed to fetch todos')
+        }
+    }catch(error){
+        console.error('can not connect to backend')
+    }
     try {
       const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/todos`)
       if (response.ok) {
