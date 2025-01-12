@@ -10,7 +10,12 @@ const port = process.env.PORT;
 
 app.use(express.json());
 
-app.use(cors());
+app.use(cors({
+  origin: '*', // Permet toutes les origines
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Permet toutes les méthodes HTTP
+  allowedHeaders: ['Content-Type', 'Authorization'], // Permet les en-têtes spécifiques
+  credentials: false // Ne pas inclure les cookies/credentials
+}));
 
 app.get('/todos', async (req: Request, res: Response) => {
   try {
