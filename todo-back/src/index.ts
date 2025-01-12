@@ -16,7 +16,7 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'Authorization'], // Permet les en-têtes spécifiques
   credentials: false // Ne pas inclure les cookies/credentials
 }));
-
+app.options('*', cors());
 app.get('/todos', async (req: Request, res: Response) => {
   try {
     const result = await pool.query('SELECT * FROM todos');
