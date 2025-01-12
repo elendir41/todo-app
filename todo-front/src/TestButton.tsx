@@ -8,7 +8,7 @@ export default function TestButton() {
         },
       });
       if (response.ok) {
-        console.log("response");
+        console.log(response);
       } else {
         console.error("Failed to communicate with backend");
       }
