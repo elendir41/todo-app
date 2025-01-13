@@ -1,7 +1,7 @@
 import './App.css'
 import TodoForm from './TodoForm'
 import TodoList from './TodoList'
-import TestButton from './TestButton'
+// import TestButton from './TestButton'
 
 function App() {
 
@@ -11,7 +11,7 @@ function App() {
         <h1>Todos</h1>
         <TodoForm />
         <TodoList />
-        <TestButton />
+        {/* <TestButton /> */}
       </div>
     </main>
   )
